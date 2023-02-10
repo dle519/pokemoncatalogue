@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import { useState } from "react";
+import "./demo.scss";
+// import Counter from './components/counter/Counter';
+import usePokemonList from "./components/PokemonList/UsePokemonListAPI";
+import PokemonItemList from "./components/PokemonItemList/PokemonItemList";
 
 function App() {
+  const { data, error } = usePokemonList();
+  console.log(data);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {error && <div>hehexd</div>}
+      {data?.results?.length > 0 && (
+        <div>
+          ok count: {data.count}
+          <PokemonItemList pokemonList={data.results} />
+        </div>
+      )}
     </div>
   );
 }
