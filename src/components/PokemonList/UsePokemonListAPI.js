@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-function oldAPICall() {
-  fetch("https://pokeapi.co/api/v2/pokemon/", {
-    method: "GET",
-    crossDomain: true,
-    headers: {
-      Accept: "application/json",
-    },
-  })
-    .then((value) => {
-      console.log(value);
-      return value.json();
-    })
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((err) => console.error(err));
-}
+// function oldAPICall() {
+//   fetch("https://pokeapi.co/api/v2/pokemon/", {
+//     method: "GET",
+//     crossDomain: true,
+//     headers: {
+//       Accept: "application/json",
+//     },
+//   })
+//     .then((value) => {
+//       console.log(value);
+//       return value.json();
+//     })
+//     .then((value) => {
+//       console.log(value);
+//     })
+//     .catch((err) => console.error(err));
+// }
 
 async function betterAPICall() {
   try {
@@ -48,7 +48,7 @@ const usePokemonList = () => {
       }
     }
     callAPI();
-  }, []);
+  }, [setData, setError]);
   return { data, error };
 };
 
